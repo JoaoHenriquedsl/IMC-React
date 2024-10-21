@@ -14,18 +14,19 @@ function imcCalc({ setResultBolean, setImc, setSituation }) {
   };
 
   const validDigits = (digit) => {
-    return digit.replace(/[^0-9]/g, "");
+    return digit.replace(/[^0-9.]/g, "");
   };
 
   const handleAlturaInput = (e) => {
     const altura = validDigits(e.target.value);
     Number(altura);
-    setAltura(altura / 100);
+    setAltura(altura);
   };
 
   const handlePesoInput = (e) => {
     const peso = validDigits(e.target.value);
-    setPeso(Number(peso));
+    Number(peso);
+    setPeso(peso);
   };
 
   const handleCalc = (e) => {
@@ -53,7 +54,7 @@ function imcCalc({ setResultBolean, setImc, setSituation }) {
               type="text"
               name="altura"
               id="altura"
-              placeholder="Exemplo: 1.75"
+              placeholder="Exemplo: 1.75 (Metros)"
               onChange={(e) => handleAlturaInput(e)}
               value={altura || ""}
             />
@@ -64,7 +65,7 @@ function imcCalc({ setResultBolean, setImc, setSituation }) {
               type="text"
               name="peso"
               id="peso"
-              placeholder="Exemplo: 70.5"
+              placeholder="Exemplo: 70.5 (Quilos)"
               onChange={(e) => handlePesoInput(e)}
               value={peso || ""}
             />
